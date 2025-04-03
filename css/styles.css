@@ -1151,34 +1151,148 @@ footer::before {
 /* Адаптивность */
 @media (max-width: 992px) {
     .container {
-        padding: 0 30px;
+        padding: 0 15px;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .regions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .hero {
+        padding: 150px 0 100px;
     }
 }
 
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
-        padding: 1rem 20px;
+        padding: 10px 0;
+        gap: 15px;
     }
     
     nav ul {
-        margin-top: 1rem;
-        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
     }
     
     .hero {
-        padding: 160px 0 100px;
+        padding: 140px 0 80px;
     }
     
     .footer-content {
         flex-direction: column;
         gap: 1.5rem;
+        text-align: center;
+    }
+    
+    .tabs-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .region-tab {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        margin: 5px;
+    }
+    
+    .uzbekistan-map {
+        height: 300px;
+    }
+    
+    .language-switcher {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+    
+    /* Гамбургер меню для мобильных */
+    .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1001;
+        position: absolute;
+        top: 20px;
+        left: 15px;
+    }
+    
+    .mobile-menu-toggle span {
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: var(--transition);
+    }
+    
+    .mobile-menu-toggle.active span:first-child {
+        transform: translateY(9px) rotate(45deg);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:last-child {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background-color: var(--light-bg);
+        z-index: 1000;
+        transition: var(--transition);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 80px 20px 20px;
+    }
+    
+    nav.open {
+        left: 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+    
+    nav ul li {
+        width: 100%;
+    }
+    
+    nav ul li a {
+        display: block;
+        font-size: 1.2rem;
+        padding: 10px 0;
+        width: 100%;
     }
 }
 
 @media (max-width: 576px) {
     nav ul {
-        gap: 1rem;
+        gap: 0.8rem;
     }
     
     nav ul li a {
@@ -1186,7 +1300,7 @@ footer::before {
     }
     
     .hero h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
     
     .hero p {
@@ -1194,650 +1308,118 @@ footer::before {
     }
     
     .btn {
-        padding: 0.8rem 2rem;
+        padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
     }
     
     section {
-        padding: 70px 0;
-    }
-}
-
-.btn {
-    display: inline-block;
-    background: var(--elegant-gradient);
-    color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: var(--transition);
-    border: 2px solid var(--accent-color);
-    box-shadow: 0 10px 20px rgba(65, 105, 225, 0.2);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: 0.5s;
-    z-index: -1;
-}
-
-.btn:hover::before {
-    left: 100%;
-}
-
-.btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(65, 105, 225, 0.3);
-    background: transparent;
-    color: var(--accent-color);
-}
-
-/* Стили для ссылки на карту */
-.map-link {
-    color: var(--primary-color);
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.map-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--accent-color);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.map-link:hover {
-    color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-.map-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.map-link::before {
-    content: '\f3c5';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    margin-right: 5px;
-    font-size: 0.9em;
-    opacity: 0;
-    transform: translateX(-5px);
-    transition: all 0.3s ease;
-}
-
-.map-link:hover::before {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Uzbekistan Map Styles */
-.uzbekistan-map {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    margin-bottom: 30px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-}
-
-.yandex-map-container {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-/* Custom styles for Yandex Map balloon */
-.custom-balloon {
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    max-width: 250px;
-}
-
-.custom-balloon h4 {
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 18px;
-}
-
-.custom-balloon p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: var(--text-color);
-}
-
-.custom-balloon .balloon-address {
-    display: flex;
-    align-items: flex-start;
-    margin: 8px 0;
-}
-
-.custom-balloon .balloon-address i {
-    color: var(--accent-color);
-    margin-right: 8px;
-    margin-top: 3px;
-}
-
-.custom-balloon .balloon-button {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.3s ease;
-}
-
-.custom-balloon .balloon-button:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-2px);
-}
-
-/* Map Points */
-.map-point {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: var(--accent-color);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 0 0 5px rgba(65, 105, 225, 0.3);
-    transition: all 0.3s ease;
-}
-
-.map-point:hover {
-    transform: translate(-50%, -50%) scale(1.2);
-    background-color: var(--primary-color);
-    box-shadow: 0 0 0 8px rgba(65, 105, 225, 0.4);
-}
-
-.point-pulse {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: var(--accent-color);
-    opacity: 0.8;
-    animation: pointPulse 2s infinite;
-}
-
-@keyframes pointPulse {
-    0% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.8;
-    }
-    70% {
-        transform: translate(-50%, -50%) scale(2);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0;
-    }
-}
-
-.point-label {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--primary-color);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.map-point:hover .point-label {
-    opacity: 1;
-}
-
-/* Region Selector */
-.region-selector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.search-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 20px;
-}
-
-.region-search {
-    width: 100%;
-    padding: 12px 40px 12px 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 30px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.region-search:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.2);
-}
-
-.clear-search {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
-    font-size: 16px;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.region-search:not(:placeholder-shown) + .clear-search {
-    opacity: 1;
-}
-
-.clear-search:hover {
-    color: var(--accent-color);
-}
-
-/* Region tabs */
-.tabs-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.region-tab {
-    white-space: nowrap;
-    padding: 10px 20px;
-    background-color: #f5f5f5;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.region-tab:hover {
-    background-color: #e0e0ff;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.region-tab.active {
-    background-color: var(--accent-color);
-    color: white;
-    box-shadow: 0 5px 15px rgba(65, 105, 225, 0.3);
-}
-
-/* Regions Grid */
-.regions-map-container {
-    margin-bottom: 40px;
-}
-
-.regions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.region-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border-top: 4px solid var(--accent-color);
-}
-
-.region-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(65, 105, 225, 0.05) 0%, rgba(255, 255, 255, 0) 50%);
-    z-index: 0;
-}
-
-.region-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.region-icon {
-    width: 60px;
-    height: 60px;
-    background-color: #f0f4ff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
-    transition: all 0.3s ease;
-}
-
-.region-icon i {
-    font-size: 24px;
-    color: var(--accent-color);
-    transition: all 0.3s ease;
-}
-
-.region-card:hover .region-icon {
-    background-color: var(--accent-color);
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 10px 20px rgba(65, 105, 225, 0.2);
-}
-
-.region-card:hover .region-icon i {
-    color: white;
-    animation: floatIcon 2s ease-in-out infinite;
-}
-
-@keyframes floatIcon {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
-
-.region-card h4 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--primary-color);
-    position: relative;
-    z-index: 1;
-}
-
-.region-card p {
-    color: var(--text-color);
-    margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
-}
-
-.region-address, .region-contact {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-}
-
-.region-address i, .region-contact i {
-    color: var(--accent-color);
-    margin-right: 10px;
-    margin-top: 3px;
-}
-
-.region-address p, .region-contact p {
-    margin-bottom: 0;
-    font-size: 14px;
-}
-
-.region-contact a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.region-contact a:hover {
-    color: var(--accent-color);
-}
-
-.no-results-message {
-    text-align: center;
-    padding: 30px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    margin-top: 20px;
-    color: var(--text-color);
-    font-size: 16px;
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .regions-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .tabs-container {
-        padding-bottom: 15px;
+        padding: 60px 0;
     }
     
-    .region-tab {
-        padding: 8px 15px;
-        font-size: 14px;
-        flex: 0 0 calc(33.33% - 10px);
-        text-align: center;
-    }
-    
-    .uzbekistan-map {
-        height: 300px;
-    }
-}
-
-@media (max-width: 576px) {
-    .regions-grid {
+    .benefits-grid, .products-grid, .regions-grid, .contacts-grid {
         grid-template-columns: 1fr;
     }
     
+    h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .product-categories {
+        gap: 10px;
+    }
+    
+    .category-btn {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
     .region-tab {
-        flex: 0 0 calc(50% - 10px);
+        font-size: 0.8rem;
+        padding: 6px 10px;
     }
     
     .uzbekistan-map {
         height: 250px;
     }
-}
-
-.region-card.highlighted {
-    border-color: var(--primary-color);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(-10px) scale(1.02);
-    z-index: 10;
-    position: relative;
-}
-
-.region-card.highlighted::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    box-shadow: 0 0 0 3px var(--primary-color);
-    animation: highlightPulse 2s infinite;
-    pointer-events: none;
-}
-
-@keyframes highlightPulse {
-    0% {
-        opacity: 0.6;
-        transform: scale(1);
+    
+    .region-card {
+        padding: 15px;
     }
-    50% {
-        opacity: 0.3;
-        transform: scale(1.03);
+    
+    .contact-card {
+        padding: 15px;
     }
-    100% {
-        opacity: 0.6;
-        transform: scale(1);
+    
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+    
+    .footer-logo-image {
+        height: 30px;
+    }
+    
+    .copyright, .footer-phone {
+        font-size: 0.9rem;
     }
 }
 
-.location-section h3 {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    color: var(--primary-color);
-    font-size: 28px;
-    position: relative;
-}
-
-.location-section h3::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: var(--accent-color);
-    border-radius: 3px;
-}
-
-.main-office-section {
-    margin-top: 60px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.main-office-section h3 {
-    margin-bottom: 40px;
-}
-
-@media (max-width: 768px) {
-    .main-office-section {
-        margin-top: 40px;
-        padding-top: 30px;
+/* Дополнительные медиа-запросы для очень маленьких экранов */
+@media (max-width: 375px) {
+    .hero h1 {
+        font-size: 1.8rem;
     }
-}
-
-/* Переключатель языка */
-.language-switcher {
-    display: flex;
-    align-items: center;
-    margin-left: 20px;
-}
-
-.lang-btn {
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    font-size: 14px;
-    font-weight: 600;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.lang-btn:first-child {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    border-right: none;
-}
-
-.lang-btn:last-child {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-
-.lang-btn.active {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.lang-btn:hover:not(.active) {
-    background-color: rgba(0, 123, 255, 0.1);
-}
-
-@media (max-width: 768px) {
-    .language-switcher {
-        position: absolute;
-        top: 20px;
-        right: 80px;
+    
+    .hero p {
+        font-size: 0.9rem;
     }
-}
-
-/* Телефон в футере */
-.footer-phone {
-    text-align: center;
-    margin-top: 10px;
-    color: #fff;
-    font-size: 16px;
-}
-
-.footer-phone a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-phone a:hover {
-    color: var(--accent-color);
-}
-
-.footer-phone i {
-    margin-right: 8px;
-    color: var(--accent-color);
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    p {
+        font-size: 0.9rem;
+    }
+    
+    .benefit-card, .product-card, .region-card, .contact-card {
+        padding: 12px;
+    }
+    
+    .btn {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.85rem;
+    }
+    
+    section {
+        padding: 50px 0;
+    }
+    
+    .tabs-container {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .tabs-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+    
+    .region-tab {
+        white-space: nowrap;
+    }
 }

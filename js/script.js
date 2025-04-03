@@ -2,6 +2,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Сайт EuropeGAS загружен!');
     
+    // Инициализация мобильного меню
+    initMobileMenu();
+    
     // Плавная прокрутка для навигационных ссылок
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -9,6 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
+            
+            // Закрываем мобильное меню при клике на ссылку
+            const nav = document.querySelector('nav');
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            nav.classList.remove('open');
+            mobileMenuToggle.classList.remove('active');
             
             if (targetElement) {
                 window.scrollTo({
@@ -18,6 +27,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Функция инициализации мобильного меню
+    function initMobileMenu() {
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('nav');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
+        }
+        
+        // Закрываем меню при клике вне его
+        document.addEventListener('click', function(e) {
+            if (!nav.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                nav.classList.remove('open');
+                mobileMenuToggle.classList.remove('active');
+            }
+        });
+        
+        // Обработка изменения размера окна
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                nav.classList.remove('open');
+                mobileMenuToggle.classList.remove('active');
+            }
+        });
+    }
     
     // Анимация для логотипа при прокрутке
     const logoImage = document.querySelector('.logo-image');
