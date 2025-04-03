@@ -1,0 +1,24 @@
+{
+  "name": "europegas",
+  "version": "1.0.0",
+  "description": "Official EuropeGAS dealer website in Uzbekistan",
+  "main": "js/script.js",
+  "homepage": "https://github.com/akbartemiroff/europagas.git",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "build.bat",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "keywords": [
+    "europegas",
+    "gas",
+    "uzbekistan",
+    "auto"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

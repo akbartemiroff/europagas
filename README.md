@@ -24,6 +24,31 @@
 - Font Awesome для иконок
 - Google Fonts для типографики
 
-## Запуск проекта
+## Разработка
 
-Для запуска проекта достаточно открыть файл `europegas.html` в любом современном веб-браузере. 
+### Установка и запуск
+
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/akbartemiroff/europagas.git
+   cd europagas
+   ```
+
+2. Для локальной разработки:
+   Просто откройте файл `europegas.html` в браузере
+
+3. Для сборки проекта:
+   ```bash
+   npm run build
+   ```
+   Это создаст директорию `build` с готовым к деплою сайтом.
+
+4. Для развертывания на GitHub Pages:
+   ```bash
+   npm install
+   npm run deploy
+   ```
+
+## Репозиторий
+
+Проект размещен на GitHub: [https://github.com/akbartemiroff/europagas.git](https://github.com/akbartemiroff/europagas.git) 
